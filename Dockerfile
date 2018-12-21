@@ -7,7 +7,7 @@ RUN yum -y install epel-release python36 python36-devel \
     lua lua-devel ncurses-devel gcc gcc-c++ ctags cscope \
     wget unzip cmake make git \
  # 建立python3软链接
- && ln -s /usr/bin/python3.6 /usr/bin/python3 \
+ && ln -s /usr/bin/python36 /usr/bin/python3 \
  # 安装pip3
  && curl "https://bootstrap.pypa.io/get-pip.py" -o "get-pip.py" \
  && python3 get-pip.py \
@@ -32,7 +32,8 @@ RUN yum -y install epel-release python36 python36-devel \
  # 修改字符集
  && localedef -c -f UTF-8 -i zh_CN zh_CN.utf8 \
  && echo "export LC_ALL=zh_CN.UTF-8" > /root/.bashrc \
- && echo "export LANG=zh_CN.UTF-8" > /root/.bashrc && source /root/.bashrc \
+ && echo "export LANG=zh_CN.UTF-8" > /root/.bashrc \
+ && source /root/.bashrc
 
 ENV LC_ALL zh_CN.UTF-8
 ENV LANG   zh_CN.UTF-8
