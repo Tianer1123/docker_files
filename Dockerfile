@@ -1,5 +1,4 @@
-FROM nginx:7.3.1611
-
+FROM centos:7.3.1611
 
 WORKDIR /root/
 
