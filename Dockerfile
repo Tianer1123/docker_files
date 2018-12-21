@@ -23,13 +23,19 @@ RUN yum -y install epel-release python36 python36-devel \
  && make && make install \
 
  # pip3 安装python补全和语法检查引擎
- && pip3 install jedi flake8
+ && pip3 install jedi flake8 \
  # 安装vimPlug和相关配置
  && curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim \
  && wget https://github.com/Tianer1123/config/blob/master/vimrc/.vimrc \
  && wget -P /root/.vim/ https://github.com/Tianer1123/config/blob/master/vimrc/plugin.vim \
- && rm /root/* -rf
+ && rm /root/* -rf \
+ # 修改字符集
+ && localedef -c -f UTF-8 -i zh_CN zh_CN.utf8 \
+ && echo "export LC_ALL=zh_CN.UTF-8" > /root/.bashrc \
+ && echo "export LANG=zh_CN.UTF-8" > /root/.bashrc && source /root/.bashrc \
 
+ENV LC_ALL zh_CN.UTF-8
+ENV LANG   zh_CN.UTF-8
 
 RUN ["vim", "-c", "PlugInstall"]
