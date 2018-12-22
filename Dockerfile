@@ -29,6 +29,7 @@ RUN yum -y install epel-release \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim \
  && wget https://github.com/Tianer1123/config/blob/master/vimrc/.vimrc \
  && wget -P /root/.vim/ https://github.com/Tianer1123/config/blob/master/vimrc/plugin.vim \
+ && wget -P /root/ https://github.com/Tianer1123/config/blob/master/vimrc/.ycm_extra_conf.py \
  && rm /root/* -rf \
  # 修改字符集
  && localedef -c -f UTF-8 -i zh_CN zh_CN.utf8 \
