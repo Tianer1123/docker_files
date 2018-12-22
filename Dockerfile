@@ -3,7 +3,8 @@ FROM centos:7.3.1611
 WORKDIR /root/
 
  # 安装编译vim的依赖库
-RUN yum -y install epel-release python36 python36-devel \
+RUN yum -y install epel-release \
+ && yum -y install python36 python36-devel \
     lua lua-devel ncurses-devel gcc gcc-c++ ctags cscope \
     wget unzip cmake make git \
  # 建立python3软链接
@@ -37,5 +38,3 @@ RUN yum -y install epel-release python36 python36-devel \
 
 ENV LC_ALL zh_CN.UTF-8
 ENV LANG   zh_CN.UTF-8
-
-RUN ["vim", "-c", "PlugInstall"]
